@@ -54,9 +54,10 @@ exports.handler = async (event) => {
             var adminUrl = 'https://techservices-munezrohill.github.io/kwanwebsite_final/admin/#/callback?token=' + encodeURIComponent(tokenPayload);
             
             // 1. Force the main (opener) window to navigate to the token FIRST.
-            window.opener.location.href = adminUrl;
-            
-            // 2. Close the pop-up window SECOND.
+            window.opener.postMessage(
+              'authorization:github:success:${JSON.stringify({ token: access_token, provider: 'github' })}',
+              '*' // Use '*' for cross-origin security compatibility
+            );
             window.close();
           })();
         </script>
