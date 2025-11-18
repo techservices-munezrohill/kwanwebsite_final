@@ -1,3 +1,7 @@
+# 1. TOP-LEVEL base_url: Tells Decap the root URL of your published site.
+base_url: https://techservices-munezrohill.github.io/kwanwebsite_final/
+
+# 2. BACKEND: Points to your Netlify OAuth proxy function.
 backend:
   name: github
   repo: techservices-munezrohill/kwanwebsite_final
