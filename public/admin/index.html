@@ -5,16 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
   
-  <!-- Force browser to load the correct config file -->
   <link rel="cms-config-url" href="config.yml?v=1">
   
-  <!-- Force browser to not cache this page -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 </head>
 <body>
   <script>
+    // **NEW FIX: Decap Compatibility Mode**
+    // This setting tells the CMS to listen for the token even when browser security
+    // blocks direct access to the parent window (window.opener = null).
+    window.decap = {
+        config: {
+            auth: {
+                allow_opener: true
+            }
+        }
+    };
+    
     // Clear any leftover Netlify Identity data to avoid redirect loops
     try {
       localStorage.removeItem('netlifySiteId');
