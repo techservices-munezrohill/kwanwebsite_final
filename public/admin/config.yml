@@ -1,12 +1,13 @@
-# 1. TOP-LEVEL base_url: Tells Decap the root URL of your published site.
+# The public URL of your website (GitHub Pages)
 base_url: https://techservices-munezrohill.github.io/kwanwebsite_final/
 
-# 2. BACKEND: Points to your Netlify OAuth proxy function.
 backend:
   name: github
   repo: techservices-munezrohill/kwanwebsite_final
   branch: main
-  base_url: https://techservices-munezrohill.github.io/kwanwebsite_final/
+
+  # IMPORTANT: Your OAuth proxy is on Netlify, not GitHub Pages
+  base_url: https://kwanwebsitefinal.netlify.app
   auth_endpoint: /.netlify/functions/auth
 
 media_folder: "public/assets/images/uploads"
