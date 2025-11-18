@@ -6,7 +6,6 @@ exports.handler = async (event) => {
   // Handle initial auth request - redirect to GitHub
   if (!code) {
     const client_id = process.env.OAUTH_CLIENT_ID;
-    // This redirect_uri must match the URL in your GitHub settings EXACTLY
     const redirect_uri = `${process.env.URL}/.netlify/functions/auth`;
     const scope = 'repo,user';
     
@@ -51,15 +50,14 @@ exports.handler = async (event) => {
             // This is the token payload
             var tokenPayload = '${JSON.stringify({ token: access_token, provider: 'github' })}';
             
-            // Construct the final admin URL, forcing the token transfer via URL fragment
+            // Construct the final admin URL
             var adminUrl = 'https://techservices-munezrohill.github.io/kwanwebsite_final/admin/#/callback?token=' + encodeURIComponent(tokenPayload);
             
-            // 1. Close the pop-up window
-            window.close();
-            
-            // 2. Force the main (opener) window to navigate to the admin URL with the token
-            // This bypasses postMessage security restrictions.
+            // 1. Force the main (opener) window to navigate to the token FIRST.
             window.opener.location.href = adminUrl;
+            
+            // 2. Close the pop-up window SECOND.
+            window.close();
           })();
         </script>
       </body>
