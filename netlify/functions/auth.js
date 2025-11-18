@@ -37,7 +37,7 @@ exports.handler = async (event) => {
 
     const { access_token } = response.data;
 
-    // Return success page that posts message to opener (Standard Fix)
+    // Return success page that forces the main window to navigate to the token
     const html = `
     <!DOCTYPE html>
     <html>
@@ -47,11 +47,16 @@ exports.handler = async (event) => {
       <body>
         <script>
           (function() {
-            // Using the wildcard '*' for cross-origin communication
-            window.opener.postMessage(
-              'authorization:github:success:${JSON.stringify({ token: access_token, provider: 'github' })}',
-              '*' 
-            );
+            // This is the token payload
+            var tokenPayload = '${JSON.stringify({ token: access_token, provider: 'github' })}';
+            
+            // Construct the final admin URL
+            var adminUrl = 'https://techservices-munezrohill.github.io/kwanwebsite_final/admin/#/callback?token=' + encodeURIComponent(tokenPayload);
+            
+            // 1. Force the main (opener) window to navigate to the token FIRST.
+            window.opener.location.href = adminUrl;
+            
+            // 2. Close the pop-up window SECOND.
             window.close();
           })();
         </script>
