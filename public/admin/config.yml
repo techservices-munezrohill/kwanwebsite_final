@@ -1,32 +1,232 @@
-# Netlify CMS configuration
-
-site_url: https://kwanwebsitefinal.netlify.app
-publish_mode: editorial_workflow
-media_folder: "static/images/uploads"
-public_folder: "/images/uploads"
+# The public URL of your website (GitHub Pages)
+base_url: https://techservices-munezrohill.github.io/kwanwebsite_final/
 
 backend:
-  name: git-gateway
+  name: github
+  repo: techservices-munezrohill/kwanwebsite_final
   branch: main
-  auth_type: implicit
-  login: true
+
+  # IMPORTANT: Your OAuth proxy is on Netlify, not GitHub Pages
+  base_url: https://kwanwebsitefinal.netlify.app
+  auth_endpoint: /.netlify/functions/auth
+
+media_folder: "public/assets/images/uploads"
+public_folder: "/kwanwebsite_final/assets/images/uploads"
+
+publish_mode: simple
 
 collections:
-  - name: "posts"
-    label: "Posts"
-    folder: "content/posts"
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "public/content/settings/general.json"
+        format: json
+        fields:
+          - { label: "Site Title", name: "site_title", widget: "string" }
+          - { label: "Site Description", name: "site_description", widget: "text" }
+          - { label: "Contact Email", name: "contact_email", widget: "string" }
+          - { label: "Location", name: "location", widget: "string", required: false }
+          - { label: "LinkedIn URL", name: "linkedin_url", widget: "string", required: false }
+          - { label: "Twitter / X URL", name: "twitter_url", widget: "string", required: false }
+          - { label: "Academia.edu URL", name: "academia_url", widget: "string", required: false }
+          - { label: "ResearchGate URL", name: "researchgate_url", widget: "string", required: false }
+
+      - label: "Home Page"
+        name: "home"
+        file: "public/content/settings/home.json"
+        format: json
+        fields:
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "string", required: false }
+          - { label: "Hero Introduction", name: "hero_intro", widget: "text", required: false }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+          - label: "Statistics"
+            name: "stats"
+            widget: "list"
+            collapsed: true
+            fields:
+              - { label: "Value", name: "value", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+
+      - label: "About Page"
+        name: "about"
+        file: "public/content/settings/about.json"
+        format: json
+        fields:
+          - { label: "Personal Statement", name: "personal_statement", widget: "text", required: false }
+          - { label: "Professional Biography", name: "bio", widget: "markdown" }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - label: "Personal Values"
+            name: "values"
+            widget: "list"
+            collapsed: true
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+  - name: "cv_data"
+    label: "CV Data"
+    files:
+      - label: "Education"
+        name: "education"
+        file: "public/content/cv/education.json"
+        format: json
+        fields:
+          - label: "Education Entries"
+            name: "entries"
+            widget: "list"
+            summary: "{{fields.degree}} — {{fields.institution}}"
+            fields:
+              - { label: "Degree", name: "degree", widget: "string" }
+              - { label: "Field", name: "field", widget: "string", required: false }
+              - { label: "Institution", name: "institution", widget: "string" }
+              - { label: "Location", name: "location", widget: "string", required: false }
+              - { label: "Year", name: "year", widget: "string" }
+              - { label: "Details", name: "details", widget: "text", required: false }
+
+      - label: "Professional Experience"
+        name: "experience"
+        file: "public/content/cv/experience.json"
+        format: json
+        fields:
+          - label: "Experience Entries"
+            name: "entries"
+            widget: "list"
+            summary: "{{fields.position}} — {{fields.institution}}"
+            fields:
+              - { label: "Position", name: "position", widget: "string" }
+              - { label: "Institution / Organization", name: "institution", widget: "string" }
+              - { label: "Location", name: "location", widget: "string", required: false }
+              - { label: "Start Date", name: "start_date", widget: "string" }
+              - { label: "End Date", name: "end_date", widget: "string", required: false }
+              - { label: "Current Role", name: "current", widget: "boolean", default: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+
+      - label: "Awards & Honors"
+        name: "awards"
+        file: "public/content/cv/awards.json"
+        format: json
+        fields:
+          - label: "Awards"
+            name: "entries"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.year}}"
+            fields:
+              - { label: "Award Name", name: "name", widget: "string" }
+              - { label: "Organization", name: "organization", widget: "string" }
+              - { label: "Year", name: "year", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+
+      - label: "Skills"
+        name: "skills"
+        file: "public/content/cv/skills.json"
+        format: json
+        fields:
+          - label: "Skill Categories"
+            name: "categories"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Category Name", name: "name", widget: "string" }
+              - { label: "Skills", name: "skills", widget: "list" }
+
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "public/content/blog"
     create: true
+    format: json
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: title
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
+      - { label: "Read Time", name: "read_time", widget: "string", required: false }
+      - { label: "Category", name: "category", widget: "string", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
+      - { label: "Gradient Theme", name: "gradient", widget: "string", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "pages"
-    label: "Pages"
-    folder: "content/pages"
+  - name: "publications"
+    label: "Publications"
+    folder: "public/content/publications"
     create: true
+    format: json
     slug: "{{slug}}"
+    identifier_field: title
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Authors", name: "authors", widget: "string" }
+      - { label: "Publication Type", name: "type", widget: "select", options: ["Journal Article", "Book", "Book Chapter", "Conference Paper", "Report", "Other"] }
+      - { label: "Year", name: "year", widget: "number", value_type: "int" }
+      - { label: "Journal / Publisher", name: "venue", widget: "string", required: false }
+      - { label: "Volume", name: "volume", widget: "string", required: false }
+      - { label: "Issue", name: "issue", widget: "string", required: false }
+      - { label: "Pages", name: "pages", widget: "string", required: false }
+      - { label: "DOI", name: "doi", widget: "string", required: false }
+      - { label: "PDF Link", name: "pdf_link", widget: "string", required: false }
+      - { label: "Cover Image", name: "cover_image", widget: "image", required: false }
+      - { label: "Abstract", name: "abstract", widget: "markdown", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Research Areas", name: "research_areas", widget: "list", required: false }
+
+  - name: "research"
+    label: "Research Projects"
+    folder: "public/content/research"
+    create: true
+    format: json
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Status", name: "status", widget: "select", options: ["Current", "Completed", "Upcoming"] }
+      - { label: "Start Date", name: "start_date", widget: "datetime", required: false }
+      - { label: "End Date", name: "end_date", widget: "datetime", required: false }
+      - { label: "Funding Source", name: "funding", widget: "string", required: false }
+      - { label: "Funding Amount", name: "funding_amount", widget: "string", required: false }
+      - { label: "Collaborators", name: "collaborators", widget: "list", required: false }
+      - { label: "Institution", name: "institution", widget: "string", required: false }
+      - { label: "Research Areas", name: "research_areas", widget: "list", required: false }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Key Findings", name: "findings", widget: "markdown", required: false }
+      - { label: "Related Publications", name: "related_publications", widget: "list", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+
+  - name: "service"
+    label: "Service & Engagement"
+    folder: "public/content/service"
+    create: true
+    format: json
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Academic Service", "Professional Membership", "Community Engagement", "Editorial Board", "Conference Organization", "Other"] }
+      - { label: "Organization", name: "organization", widget: "string", required: false }
+      - { label: "Role", name: "role", widget: "string", required: false }
+      - { label: "Start Date", name: "start_date", widget: "datetime", required: false }
+      - { label: "End Date", name: "end_date", widget: "datetime", required: false }
+      - { label: "Ongoing", name: "ongoing", widget: "boolean", default: false }
+      - { label: "Description", name: "description", widget: "markdown", required: false }
+
+  - name: "teaching"
+    label: "Teaching"
+    folder: "public/content/teaching"
+    create: true
+    format: json
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: "Course Title", name: "title", widget: "string" }
+      - { label: "Course Code", name: "course_code", widget: "string", required: false }
+      - { label: "Institution", name: "institution", widget: "string" }
+      - { label: "Term / Semester", name: "term", widget: "string", required: false }
+      - { label: "Year", name: "year", widget: "number", value_type: "int", required: false }
+      - { label: "Level", name: "level", widget: "select", options: ["Undergraduate", "Graduate", "Both"], required: false }
+      - { label: "Description", name: "description", widget: "markdown", required: false }
+      - { label: "Syllabus", name: "syllabus", widget: "file", required: false }
