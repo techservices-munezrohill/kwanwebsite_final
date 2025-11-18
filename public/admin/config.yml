@@ -6,7 +6,7 @@ backend:
   name: github
   repo: techservices-munezrohill/kwanwebsite_final
   branch: main
-  base_url: https://kwanwebsitefinal.netlify.app
+  base_url: https://techservices-munezrohill.github.io/kwanwebsite_final/
   auth_endpoint: /.netlify/functions/auth
 
 media_folder: "public/assets/images/uploads"
