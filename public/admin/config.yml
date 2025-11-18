@@ -1,71 +1,30 @@
-const axios = require('axios');
+site_url: https://kwanwebsitefinal.netlify.app
+publish_mode: editorial_workflow
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
 
-exports.handler = async (event) => {
-  const { code } = event.queryStringParameters || {};
+backend:
+  name: git-gateway
+  branch: main
+  auth_type: implicit
+  login: true
 
-  // Step 1: Redirect to GitHub if no code
-  if (!code) {
-    const authUrl = `https://github.com/login/oauth/authorize?client_id=${process.env.OAUTH_CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.URL + '/.netlify/functions/auth')}&scope=repo,user`;
-    return {
-      statusCode: 302,
-      headers: {
-        Location: authUrl,
-      },
-    };
-  }
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
 
-  // Step 2: Handle GitHub callback with code
-  try {
-    const { data } = await axios.post(
-      'https://github.com/login/oauth/access_token',
-      {
-        client_id: process.env.OAUTH_CLIENT_ID,
-        client_secret: process.env.OAUTH_CLIENT_SECRET,
-        code,
-      },
-      {
-        headers: { Accept: 'application/json' },
-      }
-    );
-
-    const accessToken = data.access_token;
-
-    if (!accessToken) {
-      throw new Error('No access token returned from GitHub');
-    }
-
-    // Step 3: Return a small HTML page that safely passes the token to Netlify CMS popup
-    const html = `
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <title>Authorization successful</title>
-        </head>
-        <body>
-          <script>
-            // Netlify CMS expects CMSOAuthCallback for popup login
-            if (window.opener && window.opener.CMSOAuthCallback) {
-              window.opener.CMSOAuthCallback("${accessToken}");
-            } else {
-              console.error('CMSOAuthCallback not found on opener window');
-            }
-            window.close();
-          </script>
-        </body>
-      </html>
-    `;
-
-    return {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'text/html',
-      },
-      body: html,
-    };
-  } catch (err) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'GitHub authentication failed', details: err.message }),
-    };
-  }
-};
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
