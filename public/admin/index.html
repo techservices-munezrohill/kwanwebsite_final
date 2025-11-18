@@ -13,9 +13,8 @@
 </head>
 <body>
   <script>
-    // **NEW FIX: Decap Compatibility Mode**
-    // This setting tells the CMS to listen for the token even when browser security
-    // blocks direct access to the parent window (window.opener = null).
+    // **CRUCIAL FIX: Decap Compatibility Mode**
+    // This allows the CMS to detect the token from the URL even if the pop-up is blocked.
     window.decap = {
         config: {
             auth: {
@@ -24,7 +23,7 @@
         }
     };
     
-    // Clear any leftover Netlify Identity data to avoid redirect loops
+    // Clear any leftover Netlify Identity data
     try {
       localStorage.removeItem('netlifySiteId');
       localStorage.removeItem('netlifyToken');
