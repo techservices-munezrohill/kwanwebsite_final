@@ -47,9 +47,10 @@ exports.handler = async (event) => {
       <body>
         <script>
           (function() {
+            // *** FIX: Changed window.location.origin to '*' to allow cross-origin communication ***
             window.opener.postMessage(
               'authorization:github:success:${JSON.stringify({ token: access_token, provider: 'github' })}',
-              window.location.origin
+              '*' 
             );
             window.close();
           })();
