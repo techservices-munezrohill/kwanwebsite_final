@@ -47,4 +47,29 @@ exports.handler = async (event) => {
       <body>
         <script>
           (function() {
-            // *** Use '*' to allow cross-origin communication with
+            // *** Use '*' to allow cross-origin communication with Decap Compatibility Mode enabled ***
+            window.opener.postMessage(
+              'authorization:github:success:${JSON.stringify({ token: access_token, provider: 'github' })}',
+              '*' 
+            );
+            window.close();
+          })();
+        </script>
+      </body>
+    </html>
+    `;
+
+    return {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'text/html',
+      },
+      body: html,
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Authentication failed', details: error.message }),
+    };
+  }
+};
