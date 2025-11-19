@@ -50,8 +50,6 @@ const Contact = () => {
     setSubmissionStatus({ isSubmitting: true, isSuccess: false, isError: false, message: '' });
     
     try {
-      // NOTE: The sendEmail utility might need updating to reflect the contact email being imported, 
-      // but the component logic for submission remains the same.
       const result = await sendEmail(formData as ContactFormData);
       
       if (result.success) {
