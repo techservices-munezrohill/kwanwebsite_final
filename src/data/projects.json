@@ -1,1 +1,231 @@
-
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Decolonizing Criminology Initiative",
+      "category": "academic",
+      "type": "Research Initiative",
+      "period": "2022 - Present",
+      "location": "Arizona State University",
+      "description": "A comprehensive initiative to transform criminology education and research by centering Indigenous, Black, and other non-Western epistemologies. This project includes curriculum development, faculty training, and community partnerships.",
+      "impact": "Reached 500+ students, trained 25 faculty members, established partnerships with 8 community organizations",
+      "collaborators": [
+        "Indigenous Justice Collective",
+        "Black Lives Matter Phoenix",
+        "Tribal Nations"
+      ],
+      "image": "from-emerald-500 to-teal-600",
+      "featured": true,
+      "outcomes": [
+        "Developed 6 new courses incorporating decolonial perspectives",
+        "Published pedagogical toolkit adopted by 12 universities",
+        "Established community advisory board for curriculum oversight"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "LGBTQ+ Justice Policy Reform",
+      "category": "advocacy",
+      "type": "Policy Initiative",
+      "period": "2020 - 2023",
+      "location": "New York City",
+      "description": "Led policy reform efforts to improve treatment of LGBTQ+ individuals in NYC criminal justice system, including training programs for law enforcement and development of affirming protocols.",
+      "impact": "Trained 1,200+ officers, reduced discriminatory incidents by 40%, established LGBTQ+ liaison program",
+      "collaborators": [
+        "NYC LGBT Center",
+        "Lambda Legal",
+        "Transgender Law Center"
+      ],
+      "image": "from-purple-500 to-pink-600",
+      "featured": true,
+      "outcomes": [
+        "Implemented mandatory LGBTQ+ cultural competency training",
+        "Established safe housing protocols for transgender individuals",
+        "Created community oversight committee"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Environmental Justice and Incarceration Study",
+      "category": "research",
+      "type": "Community Research",
+      "period": "2021 - 2024",
+      "location": "Brooklyn, NY",
+      "description": "Community-based participatory research examining the relationship between environmental racism and criminal justice involvement in Brooklyn neighborhoods.",
+      "impact": "Documented environmental-criminal justice connections in 15 neighborhoods, informed 3 policy proposals",
+      "collaborators": [
+        "Brooklyn Environmental Justice Coalition",
+        "Community residents",
+        "Local advocacy groups"
+      ],
+      "image": "from-green-500 to-emerald-600",
+      "featured": false,
+      "outcomes": [
+        "Published comprehensive community report",
+        "Presented findings to NYC Council",
+        "Secured $2M in environmental remediation funding"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Narrative Healing Circles Program",
+      "category": "community",
+      "type": "Community Program",
+      "period": "2019 - Present",
+      "location": "Phoenix, AZ / NY, USA",
+      "description": "Developed and implemented narrative-based healing circles for formerly incarcerated individuals and their families, focusing on identity reconstruction and community reintegration.",
+      "impact": "Served 200+ participants, 85% successful reintegration rate, expanded to 5 community centers",
+      "collaborators": [
+        "Reentry organizations",
+        "Faith communities",
+        "Family support groups"
+      ],
+      "image": "from-amber-500 to-orange-600",
+      "featured": true,
+      "outcomes": [
+        "Reduced recidivism by 30% among participants",
+        "Trained 40 community facilitators",
+        "Developed replicable program model"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Criminal Justice Reform Coalition",
+      "category": "advocacy",
+      "type": "Policy Advocacy",
+      "period": "2018 - 2021",
+      "location": "New York State",
+      "description": "Co-founded and led statewide coalition advocating for criminal justice reform, focusing on bail reform, sentencing reform, and police accountability measures.",
+      "impact": "Contributed to passage of 3 major reform bills, mobilized 10,000+ advocates, secured $50M in reform funding",
+      "collaborators": [
+        "ACLU NY",
+        "Legal Aid Society",
+        "Community organizations statewide"
+      ],
+      "image": "from-blue-500 to-indigo-600",
+      "featured": false,
+      "outcomes": [
+        "Bail Reform Act of 2019 passage",
+        "Police accountability legislation",
+        "Sentencing reform measures"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Restorative Justice in Schools Program",
+      "category": "community",
+      "type": "Educational Initiative",
+      "period": "2017 - 2020",
+      "location": "Brooklyn, NY",
+      "description": "Implemented restorative justice practices in 15 Brooklyn schools to reduce suspensions and improve school climate, with particular focus on supporting Black and Latino students.",
+      "impact": "Reduced suspensions by 60%, improved graduation rates by 15%, trained 200+ educators",
+      "collaborators": [
+        "NYC Department of Education",
+        "Parent organizations",
+        "Student groups"
+      ],
+      "image": "from-rose-500 to-pink-600",
+      "featured": false,
+      "outcomes": [
+        "Established restorative justice protocols in 15 schools",
+        "Trained 200+ teachers and administrators",
+        "Created peer mediation programs"
+      ]
+    }
+  ],
+  
+  "impactSummary": [
+    {
+      "number": "2,000+",
+      "label": "People Directly Served"
+    },
+    {
+      "number": "50+",
+      "label": "Organizations Partnered"
+    },
+    {
+      "number": "$5M+",
+      "label": "Funding Secured"
+    },
+    {
+      "number": "15",
+      "label": "Policy Changes"
+    }
+  ],
+  
+  "researchAreas": [
+    {
+      "title": "Social Identity Theory of Shared Narrative",
+      "description": "Exploring how collective narratives shape individual and group identities within criminal justice contexts, with particular attention to marginalized communities.",
+      "publications": 8
+    },
+    {
+      "title": "Affective Architecture",
+      "description": "Investigating the emotional and psychological dimensions of criminal justice spaces and how they impact both practitioners and those processed through the system.",
+      "publications": 6
+    },
+    {
+      "title": "Decolonizing Criminology",
+      "description": "Challenging traditional criminological frameworks through Indigenous, Black, and other non-Western epistemologies to create more inclusive and just approaches.",
+      "publications": 12
+    },
+    {
+      "title": "LGBTQ+ Justice",
+      "description": "Examining the unique experiences of LGBTQ+ individuals in criminal justice systems and developing affirming, trauma-informed approaches to justice.",
+      "publications": 10
+    },
+    {
+      "title": "Ecological Justice",
+      "description": "Connecting environmental harm with social justice, exploring how ecological destruction disproportionately affects marginalized communities.",
+      "publications": 5
+    }
+  ],
+  
+  "currentResearchProjects": [
+    {
+      "title": "Narrative Identity and Reentry Success",
+      "funding": "National Science Foundation",
+      "amount": "$450,000",
+      "period": "2023-2026",
+      "description": "A longitudinal study examining how formerly incarcerated individuals construct and reconstruct their identities during reentry, with focus on narrative coherence and community support.",
+      "collaborators": [
+        "Dr. Sarah Johnson (Rutgers)",
+        "Dr. Michael Chen (ASU)",
+        "Community Justice Coalition"
+      ]
+    },
+    {
+      "title": "Queer Criminology Pedagogy Project",
+      "funding": "Ford Foundation",
+      "amount": "$125,000",
+      "period": "2024-2025",
+      "description": "Developing inclusive curriculum and teaching materials that center LGBTQ+ experiences in criminology education.",
+      "collaborators": [
+        "LGBTQ+ Justice Collective",
+        "National LGBTQ Task Force"
+      ]
+    },
+    {
+      "title": "Environmental Racism and Criminal Justice",
+      "funding": "Robert Wood Johnson Foundation",
+      "amount": "$200,000",
+      "period": "2024-2027",
+      "description": "Investigating the intersection of environmental harm and criminal justice involvement in communities of color.",
+      "collaborators": [
+        "Environmental Justice Network",
+        "Dr. Lisa Rodriguez (UCLA)"
+      ]
+    }
+  ],
+  
+  "methodologies": [
+    "Participatory Action Research",
+    "Critical Ethnography",
+    "Narrative Analysis",
+    "Community-Based Participatory Research",
+    "Intersectional Analysis",
+    "Decolonial Methodologies",
+    "Mixed Methods Research",
+    "Qualitative Interviewing"
+  ]
+}
