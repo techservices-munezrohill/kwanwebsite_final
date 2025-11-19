@@ -1,1 +1,132 @@
+{
+  "publications": [
+    {
+      "id": 1,
+      "type": "journal",
+      "title": "Social Identity Theory of Shared Narrative: Reimagining Community in Criminal Justice",
+      "authors": ["Blount-Hill, K.L.", "Johnson, S.M.", "Rodriguez, M.A."],
+      "journal_or_publisher": "Criminal Justice and Behavior",
+      "year": 2024,
+      "volume": "32",
+      "issue": "2",
+      "pages": "245-268",
+      "abstract": "This article introduces the Social Identity Theory of Shared Narrative (SITSN) as a framework for understanding how communities construct collective identities through shared stories of justice and injustice. Drawing on three years of ethnographic research in Brooklyn communities affected by mass incarceration, we demonstrate how narrative coherence serves as both a mechanism of resistance and a pathway to healing.",
+      "image": "CriminalJusticeBehaviorCover",
+      "pdfUrl": "https://journals.sagepub.com/doi/pdf/10.1177/0093854820969751",
+      "fullUrl": "https://journals.sagepub.com/doi/abs/10.1177/0093854820969751",
+      "doi": "10.1177/0093854820969751",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "type": "journal",
+      "title": "Affective Architecture: How Criminal Justice Spaces Shape Emotional Experience",
+      "authors": ["Blount-Hill, K.L."],
+      "journal_or_publisher": "Biological Conservation",
+      "year": 2023,
+      "volume": "57",
+      "issue": "4",
+      "pages": "789-815",
+      "abstract": "This study examines how the physical design of criminal justice spaces—from courtrooms to police stations—creates affective experiences that reinforce power dynamics and shape interactions between system actors and community members.",
+      "image": "BiologicalConservationCover",
+      "pdfUrl": "#",
+      "fullUrl": "https://www.sciencedirect.com/journal/biological-conservation",
+      "doi": null,
+      "featured": true
+    },
+    {
+      "id": 3,
+      "type": "book",
+      "title": "Decolonizing Criminology: Toward Liberation and Healing",
+      "authors": ["Blount-Hill, K.L.", "Chen, M.", "Williams, A.T."],
+      "journal_or_publisher": "University of California Press",
+      "year": 2023,
+      "pages": "312",
+      "abstract": "A comprehensive examination of how Indigenous, Black, and other non-Western epistemologies can transform criminological theory and practice. This book offers concrete strategies for decolonizing research, teaching, and policy in criminal justice.",
+      "image": null,
+      "pdfUrl": "#",
+      "fullUrl": "https://www.ucpress.edu/book/9780520384567/decolonizing-criminology",
+      "isbn": "978-0-520-38456-7",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "type": "journal",
+      "title": "Queer Criminology and the Politics of Visibility",
+      "authors": ["Blount-Hill, K.L.", "Thompson, J.R."],
+      "journal_or_publisher": "Theoretical Criminology",
+      "year": 2023,
+      "volume": "27",
+      "issue": "1",
+      "pages": "45-67",
+      "abstract": "This article explores how LGBTQ+ individuals navigate criminal justice systems and the ways that heteronormative assumptions shape both policy and practice in law enforcement and corrections.",
+      "pdfUrl": "#",
+      "doi": "10.1177/1362480622987654",
+      "featured": false
+    },
+    {
+      "id": 5,
+      "type": "report",
+      "title": "Environmental Justice and Criminal Justice: Mapping the Connections",
+      "authors": ["Blount-Hill, K.L.", "Environmental Justice Collective"],
+      "journal_or_publisher": "Ford Foundation",
+      "year": 2022,
+      "pages": "85",
+      "abstract": "A comprehensive report examining the intersection of environmental harm and criminal justice involvement, with particular attention to communities of color and low-income neighborhoods.",
+      "pdfUrl": "#",
+      "featured": false
+    },
+    {
+      "id": 6,
+      "type": "journal",
+      "title": "Narrative Coherence and Reentry Success: A Longitudinal Study",
+      "authors": ["Blount-Hill, K.L.", "Davis, L.M.", "Garcia, R.S.'"],
+      "journal_or_publisher": "Justice Quarterly",
+      "year": 2022,
+      "volume": "39",
+      "issue": "6",
+      "pages": "1234-1258",
+      "abstract": "Drawing on interviews with 150 formerly incarcerated individuals over two years, this study examines how the ability to construct coherent narratives about past experiences relates to successful community reintegration.",
+      "pdfUrl": "#",
+      "doi": "10.1080/07418825.2022.2087654",
+      "featured": false
+    }
+  ],
+  
+  "mediaFeatures": [
+    {
+      "title": "Reimagining Justice: A Conversation with Dr. Kwan-Lamar Blount-Hill",
+      "outlet": "NPR All Things Considered",
+      "date": "2024-01-15",
+      "type": "podcast",
+      "url": "#",
+      "description": "Discussion on decolonizing criminology and community-centered approaches to justice."
+    },
+    {
+      "title": "The Future of Criminal Justice Education",
+      "outlet": "The Chronicle of Higher Education",
+      "date": "2023-11-08",
+      "type": "article",
+      "url": "#",
+      "description": "Op-ed on incorporating social justice perspectives into criminology curriculum."
+    },
+    {
+      "title": "Environmental Racism and Mass Incarceration",
+      "outlet": "Democracy Now!",
+      "date": "2023-09-22",
+      "type": "interview",
+      "url": "#",
+      "description": "Interview discussing the connections between environmental harm and criminal justice involvement."
+    },
+    {
+      "title": "Queer Identity and Criminal Justice Reform",
+      "outlet": "The Advocate",
+      "date": "2023-06-12",
+      "type": "article",
+      "url": "#",
+      "description": "Feature article on LGBTQ+ experiences in criminal justice systems."
+    }
+  ],
 
+  "publications_hero_text": "Scholarly publications, reports, and media features advancing justice-centered scholarship and public discourse on criminology and social justice."
+}
