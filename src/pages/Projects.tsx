@@ -13,8 +13,6 @@ const {
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
 
-  // NOTE: The 'projects' array is now imported.
-  
   // === EDITED: Derive categories dynamically for UI filtering ===
   const projectCategories = [
     { id: 'all', name: 'All Projects', count: projects.length },
@@ -45,7 +43,7 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* Featured Projects - EDITED: Uses imported featuredProjects */}
+      {/* Featured Projects - Uses imported featuredProjects */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -80,7 +78,6 @@ const Projects = () => {
                     <h3 className="text-2xl font-bold text-stone-900 mb-3">{project.title}</h3>
                     <div className="flex items-center text-stone-600 mb-4">
                       <MapPin className="h-4 w-4 mr-1" />
-                      {/* Note: location object was simplified to string in JSON migration */}
                       <span>{project.location}</span> 
                     </div>
                     <p className="text-stone-600 mb-4 leading-relaxed">{project.description}</p>
@@ -120,7 +117,7 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* All Projects - EDITED: Uses filteredProjects */}
+      {/* All Projects - Uses filteredProjects */}
       <section className="py-20 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -132,7 +129,7 @@ const Projects = () => {
             </p>
           </div>
 
-          {/* Filter Buttons - EDITED: Uses projectCategories */}
+          {/* Filter Buttons - Uses projectCategories */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {projectCategories.map((category) => (
               <button
@@ -195,7 +192,7 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* Impact Summary - EDITED: Uses imported impactSummary list */}
+      {/* Impact Summary - Uses imported impactSummary list */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
