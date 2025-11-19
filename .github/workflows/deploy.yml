@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  # Optional: Allows manual trigger of the workflow from the Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,32 +17,37 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  build_and_deploy: # Consolidated the entire process into one robust job
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+        
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-      
+          
       - name: Install dependencies
         run: npm ci
-      
-      - name: Build
+        
+      - name: Build site (npm run build)
         run: npm run build
-      
+        
+      # --- PAGES DEPLOYMENT STEPS ---
+      # 1. Sets up the GitHub Pages environment
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
-      - name: Upload artifact
+        
+      # 2. Uploads the artifact (the built site in the 'dist' folder)
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
-      
+          # Ensure this path matches your build output folder (usually 'dist')
+          path: './dist' 
+          
+      # 3. Deploys the artifact to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
