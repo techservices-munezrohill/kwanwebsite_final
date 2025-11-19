@@ -3,6 +3,22 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Scale, Heart } from 'lucide-react';
 import Photo6 from '../assets/Photo-6.jpg';
 
+// === EDITED: Import homepage data ===
+import homepageData from '../data/homepage.json';
+
+const { 
+  fullText, 
+  subtitle, 
+  description, 
+  features, 
+  stats, 
+  recentWorkPreview, 
+  cta_headline, 
+  cta_subtext,
+  hero_image
+} = homepageData;
+// ===================================
+
 const Home = () => {
   const [displayedText, setDisplayedText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
@@ -13,7 +29,7 @@ const Home = () => {
   const [statsAnimated, setStatsAnimated] = useState(false);
   const [statValues, setStatValues] = useState([0, 0, 0, 0]);
   
-  const fullText = 'Dr. Kwan-Lamar Blount-Hill';
+  // NOTE: fullText is now imported from JSON. It does NOT need to be redefined here.
   
   useEffect(() => {
     let currentIndex = 0;
@@ -39,33 +55,10 @@ const Home = () => {
     const startDelay = setTimeout(typeWriter, 500);
     
     return () => clearTimeout(startDelay);
-  }, []);
+  }, [fullText]); // Added fullText to dependency array
 
-  const features = [
-    {
-      icon: <BookOpen className="h-8 w-8" />,
-      title: 'Scholar',
-      description: 'Advancing criminological theory through innovative research and critical analysis.'
-    },
-    {
-      icon: <Scale className="h-8 w-8" />,
-      title: 'Attorney',
-      description: 'Advocating for justice through legal expertise and policy reform.'
-    },
-    {
-      icon: <Heart className="h-8 w-8" />,
-      title: 'Advocate',
-      description: 'Championing social and ecological justice for marginalized communities.'
-    }
-  ];
-
-  const stats = [
-    { number: '8+', label: 'Years Experience', targetValue: 8, prefix: '', suffix: '+' },
-    { number: '33+', label: 'Publications', targetValue: 33, prefix: '', suffix: '+' },
-    { number: '4+', label: 'Universities', targetValue: 4, prefix: '', suffix: '+' },
-    { number: '$1.2M+', label: 'Research Funding', targetValue: 1.2, prefix: '$', suffix: 'M+' }
-  ];
-
+  // NOTE: The hardcoded features and stats arrays are now removed.
+  
   // Scroll observer for stats animation
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -128,7 +121,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-2 lg:mt-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <div className="flex flex-col justify-start space-y-4 order-2 lg:order-1">
-              {/* Animated Name */}
+              {/* Animated Name - Uses imported fullText */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight min-h-[4rem] lg:min-h-[5rem]">
                 <span className="inline-block">
                   {displayedText}
@@ -136,26 +129,25 @@ const Home = () => {
                 </span>
               </h1>
               
-              {/* Animated Subtitle */}
+              {/* Animated Subtitle - EDITED: Uses imported subtitle */}
               <div className={`transition-all duration-700 ease-out transform ${
                 showSubtitle 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-4'
               }`}>
                 <p className="text-xl sm:text-2xl md:text-3xl text-amber-200 font-light">
-                  Scholar. Attorney. Advocate.
+                  {subtitle}
                 </p>
               </div>
               
-              {/* Animated Description */}
+              {/* Animated Description - EDITED: Uses imported description */}
               <div className={`transition-all duration-700 ease-out transform ${
                 showDescription 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-4'
               }`}>
                 <p className="text-lg md:text-xl text-stone-300 leading-relaxed max-w-2xl">
-                  Criminologist, professor, researcher, and advocate for social and ecological justice. 
-                  Advancing transformative scholarship that centers Black, queer, and marginalized voices.
+                  {description}
                 </p>
               </div>
               
@@ -192,7 +184,7 @@ const Home = () => {
               <div className="relative w-full max-w-md lg:max-w-lg xl:max-w-xl aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300">
                 <img
                   src={Photo6}
-                  alt="Dr. Kwan-Lamar Blount-Hill professional"
+                  alt={hero_image.alt} {/* EDITED: Use imported alt text */}
                   className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
                   loading="eager"
                 />
@@ -205,7 +197,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Animated Stats Section */}
+      {/* Animated Stats Section - EDITED: Uses imported stats list */}
       <section id="stats-section" className="py-16 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -244,7 +236,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section - EDITED: Uses imported features list */}
       <section className="py-20 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -260,7 +252,10 @@ const Home = () => {
             {features.map((feature, index) => (
               <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="text-amber-700 mb-4">
-                  {feature.icon}
+                   {/* Manually mapping icons based on title is preserved */}
+                   {feature.title === 'Scholar' && <BookOpen className="h-8 w-8" />}
+                   {feature.title === 'Attorney' && <Scale className="h-8 w-8" />}
+                   {feature.title === 'Advocate' && <Heart className="h-8 w-8" />}
                 </div>
                 <h3 className="text-xl font-semibold text-stone-900 mb-3">
                   {feature.title}
@@ -274,7 +269,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Recent Work Preview */}
+      {/* Recent Work Preview - EDITED: Uses imported recentWorkPreview */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -287,29 +282,7 @@ const Home = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {[ 
-              { 
-                title: 'Social Identity Theory Research', 
-                type: 'Research', 
-                color: 'from-amber-500 to-orange-600',
-                link: '/publications#social-identity-theory',
-                description: 'Reimagining community in criminal justice through shared narrative frameworks.'
-              },
-              { 
-                title: 'Decolonizing Criminology', 
-                type: 'Publication', 
-                color: 'from-stone-600 to-stone-700',
-                link: '/publications#decolonizing-criminology',
-                description: 'A comprehensive examination of Indigenous and non-Western epistemologies in criminology.'
-              },
-              { 
-                title: 'Queer Criminology Research', 
-                type: 'Research', 
-                color: 'from-emerald-500 to-teal-600',
-                link: '/publications#queer-criminology',
-                description: 'Exploring LGBTQ+ experiences and the politics of visibility in criminal justice systems.'
-              }
-            ].map((item, index) => (
+            {recentWorkPreview.map((item, index) => (
               <Link 
                 key={index} 
                 to={item.link}
@@ -344,14 +317,14 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section - EDITED: Uses imported CTA text */}
       <section className="py-20 bg-gradient-to-r from-amber-700 to-stone-800 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Collaborate on Justice-Centered Work
+            {cta_headline}
           </h2>
           <p className="text-xl mb-8 text-amber-100">
-            Interested in research collaboration, speaking engagements, or consulting on justice initiatives?
+            {cta_subtext}
           </p>
           <Link
             to="/contact"
