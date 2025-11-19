@@ -2,6 +2,19 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, MessageCircle, Calendar, BookOpen, CheckCircle, AlertCircle } from 'lucide-react';
 import { sendEmail, ContactFormData } from '../utils/emailService';
 
+// === EDITED: Import contact data ===
+import contactData from '../data/contact.json';
+
+const { 
+  email, 
+  location_1, 
+  location_2, 
+  faqs, 
+  social_links, 
+  response_time 
+} = contactData;
+// ===================================
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -37,6 +50,8 @@ const Contact = () => {
     setSubmissionStatus({ isSubmitting: true, isSuccess: false, isError: false, message: '' });
     
     try {
+      // NOTE: The sendEmail utility might need updating to reflect the contact email being imported, 
+      // but the component logic for submission remains the same.
       const result = await sendEmail(formData as ContactFormData);
       
       if (result.success) {
@@ -68,7 +83,7 @@ const Contact = () => {
         isSubmitting: false,
         isSuccess: false,
         isError: true,
-        message: 'An unexpected error occurred. Please try again or email directly at kblounthill@gmail.com'
+        message: `An unexpected error occurred. Please try again or email directly at ${email}`
       });
     }
     
@@ -78,41 +93,28 @@ const Contact = () => {
     }, 5000);
   };
 
-  const contactInfo = [
+  // === EDITED: Replaced contactInfo hardcoding with dynamic data from JSON ===
+  const contactInfoDynamic = [
     {
       icon: <Mail className="h-6 w-6" />,
       title: 'Email',
-      value: 'kblounthill@gmail.com',
-      link: 'mailto:kblounthill@gmail.com'
+      value: email,
+      link: `mailto:${email}`
     },
     {
       icon: <MapPin className="h-6 w-6" />,
       title: 'Location',
       value: (
         <div className="space-y-1">
-          <div>Phoenix, AZ</div>
-          <div>NY, USA</div>
+          <div>{location_1}</div>
+          <div>{location_2}</div>
         </div>
       ),
       link: '#'
     }
   ];
-
-  const faqs = [
-    {
-      question: 'How can I collaborate on research?',
-      answer: 'I welcome research collaborations that align with my focus on critical criminology, social justice, and community-centered approaches. Please reach out with your ideas and we can explore potential partnerships.'
-    },
-    {
-      question: 'Do you accept speaking engagements?',
-      answer: 'Yes, I regularly speak at conferences, universities, and community events on topics related to criminology, social justice, and advocacy. Please provide details about your event and timeline.'
-    },
-    {
-      question: 'Can you provide consultation services?',
-      answer: 'I offer consultation services for organizations, legal teams, and policy makers on criminal justice reform, diversity and inclusion, and community engagement strategies.'
-    }
-  ];
-
+  // === Removed hardcoded faqs and social media arrays ===
+  
   return (
     <div className="pt-16">
       {/* Hero Section */}
@@ -143,6 +145,7 @@ const Contact = () => {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Name Input */}
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-stone-700 mb-2">
                       Full Name *
@@ -158,6 +161,7 @@ const Contact = () => {
                       placeholder="Your name"
                     />
                   </div>
+                  {/* Email Input */}
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-2">
                       Email Address *
@@ -176,6 +180,7 @@ const Contact = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Inquiry Type Select */}
                   <div>
                     <label htmlFor="inquiryType" className="block text-sm font-medium text-stone-700 mb-2">
                       Inquiry Type
@@ -195,6 +200,7 @@ const Contact = () => {
                       <option value="other">Other</option>
                     </select>
                   </div>
+                  {/* Subject Input */}
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-stone-700 mb-2">
                       Subject *
@@ -212,6 +218,7 @@ const Contact = () => {
                   </div>
                 </div>
 
+                {/* Message Textarea */}
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-stone-700 mb-2">
                     Message *
@@ -266,11 +273,11 @@ const Contact = () => {
 
             {/* Contact Info & Additional Options */}
             <div className="space-y-8">
-              {/* Contact Information */}
+              {/* Contact Information - EDITED: Using dynamic contactInfoDynamic array */}
               <div className="bg-white p-8 rounded-xl shadow-lg">
                 <h3 className="text-2xl font-bold text-stone-900 mb-6">Get in Touch</h3>
                 <div className="space-y-4">
-                  {contactInfo.map((info, index) => (
+                  {contactInfoDynamic.map((info, index) => (
                     <a
                       key={index}
                       href={info.link}
@@ -288,98 +295,52 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Quick Options */}
+              {/* Quick Options - EDITED: Pulling links from social_links list */}
               <div className="bg-white p-8 rounded-xl shadow-lg">
                 <h3 className="text-2xl font-bold text-stone-900 mb-6">Other Ways to Connect</h3>
                 <div className="space-y-4">
-                  <a
-                    href="https://scholar.google.com/citations?user=kwan-lamar-blount-hill"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-4 p-4 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors group"
-                  >
-                    <BookOpen className="h-6 w-6 text-amber-600 group-hover:text-amber-700" />
-                    <div>
-                      <div className="font-medium text-stone-900">Google Scholar</div>
-                      <div className="text-sm text-stone-500">View my complete publication record</div>
-                    </div>
-                  </a>
-                  <a
-                    href="https://www.researchgate.net/profile/Kwan_Lamar_Blount_Hill"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-4 p-4 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors group"
-                  >
-                    <BookOpen className="h-6 w-6 text-amber-600 group-hover:text-amber-700" />
-                    <div>
-                      <div className="font-medium text-stone-900">ResearchGate Profile</div>
-                      <div className="text-sm text-stone-500">Connect with me on ResearchGate</div>
-                    </div>
-                  </a>
-                  <a
-                    href="https://orcid.org/0000-0002-5471-0812"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-4 p-4 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors group"
-                  >
-                    <BookOpen className="h-6 w-6 text-amber-600 group-hover:text-amber-700" />
-                    <div>
-                      <div className="font-medium text-stone-900">ORCID ID</div>
-                      <div className="text-sm text-stone-500">0000-0002-5471-0812</div>
-                    </div>
-                  </a>
+                  {social_links.filter(link => link.platform.includes('Scholar') || link.platform.includes('ResearchGate') || link.platform.includes('ORCID')).map((link, index) => (
+                    <a
+                      key={index}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-4 p-4 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors group"
+                    >
+                      <BookOpen className="h-6 w-6 text-amber-600 group-hover:text-amber-700" />
+                      <div>
+                        <div className="font-medium text-stone-900">{link.platform}</div>
+                        <div className="text-sm text-stone-500">{link.platform.includes('ID') ? link.url.split('/').pop() : `View my complete publication record`}</div>
+                      </div>
+                    </a>
+                  ))}
                 </div>
               </div>
 
-              {/* Social Media */}
+              {/* Social Media - EDITED: Pulling social links from social_links list */}
               <div className="bg-white p-8 rounded-xl shadow-lg">
                 <h3 className="text-2xl font-bold text-stone-900 mb-6">Social Media & Professional Networks</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <a
-                    href="https://www.linkedin.com/in/kwan-lamar-blount-hill"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-3 p-3 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors group"
-                  >
-                    <BookOpen className="h-5 w-5 text-amber-600 group-hover:text-amber-700" />
-                    <span className="text-stone-900 font-medium text-sm">LinkedIn</span>
-                  </a>
-                  <a
-                    href="https://twitter.com/kwanbh"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-3 p-3 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors group"
-                  >
-                    <BookOpen className="h-5 w-5 text-amber-600 group-hover:text-amber-700" />
-                    <span className="text-stone-900 font-medium text-sm">Twitter</span>
-                  </a>
-                  <a
-                    href="https://www.facebook.com/kwanlamar.blounthill"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-3 p-3 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors group"
-                  >
-                    <BookOpen className="h-5 w-5 text-amber-600 group-hover:text-amber-700" />
-                    <span className="text-stone-900 font-medium text-sm">Facebook</span>
-                  </a>
-                  <a
-                    href="https://www.instagram.com/kwanlamarblounthill"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-3 p-3 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors group"
-                  >
-                    <BookOpen className="h-5 w-5 text-amber-600 group-hover:text-amber-700" />
-                    <span className="text-stone-900 font-medium text-sm">Instagram</span>
-                  </a>
+                  {social_links.filter(link => link.platform.includes('LinkedIn') || link.platform.includes('Twitter') || link.platform.includes('Facebook') || link.platform.includes('Instagram')).map((link, index) => (
+                    <a
+                      key={index}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-3 p-3 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors group"
+                    >
+                      <BookOpen className="h-5 w-5 text-amber-600 group-hover:text-amber-700" />
+                      <span className="text-stone-900 font-medium text-sm">{link.platform}</span>
+                    </a>
+                  ))}
                 </div>
               </div>
 
-              {/* Response Time */}
+              {/* Response Time - EDITED: Using imported response_time text */}
               <div className="bg-amber-50 p-6 rounded-xl">
                 <h4 className="font-semibold text-amber-900 mb-2">Response Time</h4>
                 <p className="text-amber-800 text-sm">
-                  I typically respond to all inquiries within 24 hours during business days. 
-                  For time-sensitive matters, please indicate urgency in your message.
+                  {response_time}
                 </p>
               </div>
             </div>
@@ -387,7 +348,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ Section - EDITED: Using imported faqs list */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
