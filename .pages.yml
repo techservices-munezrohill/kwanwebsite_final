@@ -7,7 +7,7 @@ collections:
   - name: "site_content"
     label: "Website Pages & Global Data"
     files:
-    
+      
       # 1. HOME PAGE CONTENT (from homepage.json)
       - name: "home"
         label: "Home Page"
@@ -66,7 +66,7 @@ collections:
               - {label: "Year", name: "year", widget: "string"}
               - {label: "Title", name: "title", widget: "string"}
               - {label: "Description", name: "description", widget: "text"}
-          - label: "Mission Quote (Today's Mission)", name: "mission_quote", widget: "markdown"}
+          - {label: "Mission Quote (Today's Mission)", name: "mission_quote", widget: "markdown"}
           - {label: "Mission Follow Up", name: "mission_follow_up", widget: "text"}
 
       # 3. CONTACT PAGE CONTENT (from contact.json)
@@ -75,10 +75,10 @@ collections:
         file: "src/data/contact.json"
         format: "json"
         fields:
-          - label: "Contact Email", name: "email", widget: "string", hint: "The email address shown on the page"
-          - label: "Location 1", name: "location_1", widget: "string"
-          - label: "Location 2", name: "location_2", widget: "string"
-          - label: "Response Time Text", name: "response_time", widget: "text"}
+          - {label: "Contact Email", name: "email", widget: "string", hint: "The email address shown on the page"}
+          - {label: "Location 1", name: "location_1", widget: "string"}
+          - {label: "Location 2", name: "location_2", widget: "string"}
+          - {label: "Response Time Text", name: "response_time", widget: "text"}
           - label: "FAQ List"
             name: "faqs"
             widget: "list"
@@ -157,7 +157,7 @@ collections:
         file: "src/data/publications.json"
         format: "json"
         fields:
-          - label: "Publications Hero Text", name: "publications_hero_text", widget: "markdown"}
+          - {label: "Publications Hero Text", name: "publications_hero_text", widget: "markdown"}
           - label: "Publications"
             name: "publications"
             widget: "list"
@@ -192,7 +192,7 @@ collections:
         file: "src/data/courses.json"
         format: "json"
         fields:
-          - label: "Philosophy Quote", name: "philosophyQuote", widget: "markdown"}
+          - {label: "Philosophy Quote", name: "philosophyQuote", widget: "markdown"}
           - label: "Philosophy Principles", name: "teachingPhilosophy", widget: "list", fields: [
               {label: "Title", name: "title", widget: "string"}, {label: "Description", name: "description", widget: "text"}
             ]
@@ -232,7 +232,7 @@ collections:
         file: "src/data/cv.json"
         format: "json"
         fields:
-          - label: "Research Interests (Markdown)", name: "researchInterests", widget: "markdown"}
+          - {label: "Research Interests (Markdown)", name: "researchInterests", widget: "markdown"}
           - label: "Education Records", name: "education", widget: "list", fields: [
               {label: "Degree", name: "degree", widget: "string"}, {label: "Institution", name: "institution", widget: "string"}, {label: "Year", name: "year", widget: "string"}
             ]
