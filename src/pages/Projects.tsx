@@ -1,126 +1,22 @@
 import React, { useState } from 'react';
 import { ExternalLink, Calendar, Users, Award, Filter, MapPin, Heart } from 'lucide-react';
 
+// === EDITED: Import combined projects data ===
+import projectsData from '../data/projects.json';
+
+const { 
+  projects, 
+  impactSummary 
+} = projectsData;
+// ===========================================
+
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
 
-  const projects = [
-    {
-      id: 1,
-      title: 'Decolonizing Criminology Initiative',
-      category: 'academic',
-      type: 'Research Initiative',
-      period: '2022 - Present',
-      location: 'Arizona State University',
-      description: 'A comprehensive initiative to transform criminology education and research by centering Indigenous, Black, and other non-Western epistemologies. This project includes curriculum development, faculty training, and community partnerships.',
-      impact: 'Reached 500+ students, trained 25 faculty members, established partnerships with 8 community organizations',
-      collaborators: ['Indigenous Justice Collective', 'Black Lives Matter Phoenix', 'Tribal Nations'],
-      image: 'from-emerald-500 to-teal-600',
-      featured: true,
-      outcomes: [
-        'Developed 6 new courses incorporating decolonial perspectives',
-        'Published pedagogical toolkit adopted by 12 universities',
-        'Established community advisory board for curriculum oversight'
-      ]
-    },
-    {
-      id: 2,
-      title: 'LGBTQ+ Justice Policy Reform',
-      category: 'advocacy',
-      type: 'Policy Initiative',
-      period: '2020 - 2023',
-      location: 'New York City',
-      description: 'Led policy reform efforts to improve treatment of LGBTQ+ individuals in NYC criminal justice system, including training programs for law enforcement and development of affirming protocols.',
-      impact: 'Trained 1,200+ officers, reduced discriminatory incidents by 40%, established LGBTQ+ liaison program',
-      collaborators: ['NYC LGBT Center', 'Lambda Legal', 'Transgender Law Center'],
-      image: 'from-purple-500 to-pink-600',
-      featured: true,
-      outcomes: [
-        'Implemented mandatory LGBTQ+ cultural competency training',
-        'Established safe housing protocols for transgender individuals',
-        'Created community oversight committee'
-      ]
-    },
-    {
-      id: 3,
-      title: 'Environmental Justice and Incarceration Study',
-      category: 'research',
-      type: 'Community Research',
-      period: '2021 - 2024',
-      location: 'Brooklyn, NY',
-      description: 'Community-based participatory research examining the relationship between environmental racism and criminal justice involvement in Brooklyn neighborhoods.',
-      impact: 'Documented environmental-criminal justice connections in 15 neighborhoods, informed 3 policy proposals',
-      collaborators: ['Brooklyn Environmental Justice Coalition', 'Community residents', 'Local advocacy groups'],
-      image: 'from-green-500 to-emerald-600',
-      featured: false,
-      outcomes: [
-        'Published comprehensive community report',
-        'Presented findings to NYC Council',
-        'Secured $2M in environmental remediation funding'
-      ]
-    },
-    {
-      id: 4,
-      title: 'Narrative Healing Circles Program',
-      category: 'community',
-      type: 'Community Program',
-      period: '2019 - Present',
-      location: (
-        <div className="space-y-1">
-          <div>Phoenix, AZ</div>
-          <div>NY, USA</div>
-        </div>
-      ),
-      description: 'Developed and implemented narrative-based healing circles for formerly incarcerated individuals and their families, focusing on identity reconstruction and community reintegration.',
-      impact: 'Served 200+ participants, 85% successful reintegration rate, expanded to 5 community centers',
-      collaborators: ['Reentry organizations', 'Faith communities', 'Family support groups'],
-      image: 'from-amber-500 to-orange-600',
-      featured: true,
-      outcomes: [
-        'Reduced recidivism by 30% among participants',
-        'Trained 40 community facilitators',
-        'Developed replicable program model'
-      ]
-    },
-    {
-      id: 5,
-      title: 'Criminal Justice Reform Coalition',
-      category: 'advocacy',
-      type: 'Policy Advocacy',
-      period: '2018 - 2021',
-      location: 'New York State',
-      description: 'Co-founded and led statewide coalition advocating for criminal justice reform, focusing on bail reform, sentencing reform, and police accountability measures.',
-      impact: 'Contributed to passage of 3 major reform bills, mobilized 10,000+ advocates, secured $50M in reform funding',
-      collaborators: ['ACLU NY', 'Legal Aid Society', 'Community organizations statewide'],
-      image: 'from-blue-500 to-indigo-600',
-      featured: false,
-      outcomes: [
-        'Bail Reform Act of 2019 passage',
-        'Police accountability legislation',
-        'Sentencing reform measures'
-      ]
-    },
-    {
-      id: 6,
-      title: 'Restorative Justice in Schools Program',
-      category: 'community',
-      type: 'Educational Initiative',
-      period: '2017 - 2020',
-      location: 'Brooklyn, NY',
-      description: 'Implemented restorative justice practices in 15 Brooklyn schools to reduce suspensions and improve school climate, with particular focus on supporting Black and Latino students.',
-      impact: 'Reduced suspensions by 60%, improved graduation rates by 15%, trained 200+ educators',
-      collaborators: ['NYC Department of Education', 'Parent organizations', 'Student groups'],
-      image: 'from-rose-500 to-pink-600',
-      featured: false,
-      outcomes: [
-        'Established restorative justice protocols in 15 schools',
-        'Trained 200+ teachers and administrators',
-        'Created peer mediation programs'
-      ]
-    }
-  ];
-
-  const categories = [
+  // NOTE: The 'projects' array is now imported.
+  
+  // === EDITED: Derive categories dynamically for UI filtering ===
+  const projectCategories = [
     { id: 'all', name: 'All Projects', count: projects.length },
     { id: 'academic', name: 'Academic', count: projects.filter(p => p.category === 'academic').length },
     { id: 'research', name: 'Research', count: projects.filter(p => p.category === 'research').length },
@@ -149,7 +45,7 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Featured Projects - EDITED: Uses imported featuredProjects */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -184,7 +80,8 @@ const Projects = () => {
                     <h3 className="text-2xl font-bold text-stone-900 mb-3">{project.title}</h3>
                     <div className="flex items-center text-stone-600 mb-4">
                       <MapPin className="h-4 w-4 mr-1" />
-                      <span>{project.location}</span>
+                      {/* Note: location object was simplified to string in JSON migration */}
+                      <span>{project.location}</span> 
                     </div>
                     <p className="text-stone-600 mb-4 leading-relaxed">{project.description}</p>
                     
@@ -223,7 +120,7 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* All Projects */}
+      {/* All Projects - EDITED: Uses filteredProjects */}
       <section className="py-20 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -235,9 +132,9 @@ const Projects = () => {
             </p>
           </div>
 
-          {/* Filter Buttons */}
+          {/* Filter Buttons - EDITED: Uses projectCategories */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
+            {projectCategories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setActiveFilter(category.id)}
@@ -298,7 +195,7 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* Impact Summary */}
+      {/* Impact Summary - EDITED: Uses imported impactSummary list */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -311,12 +208,7 @@ const Projects = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: '2,000+', label: 'People Directly Served' },
-              { number: '50+', label: 'Organizations Partnered' },
-              { number: '$5M+', label: 'Funding Secured' },
-              { number: '15', label: 'Policy Changes' }
-            ].map((stat, index) => (
+            {impactSummary.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-amber-700 mb-2">
                   {stat.number}
