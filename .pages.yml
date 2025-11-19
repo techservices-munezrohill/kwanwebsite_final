@@ -1,4 +1,5 @@
 # .pages.yml - Pages CMS Configuration
+# This file contains the corrected YAML structure.
 
 # -----------------------------------------------
 # A. STATIC PAGES & GLOBAL DATA (Files Collections)
@@ -193,21 +194,38 @@ collections:
         format: "json"
         fields:
           - {label: "Philosophy Quote", name: "philosophyQuote", widget: "markdown"}
-          - label: "Philosophy Principles", name: "teachingPhilosophy", widget: "list", fields: [
-              {label: "Title", name: "title", widget: "string"}, {label: "Description", name: "description", widget: "text"}
-            ]
-          - label: "Current Courses", name: "currentCourses", widget: "list", fields: [
-              {label: "Course Code", name: "code", widget: "string"}, {label: "Title", name: "title", widget: "string"}, {label: "Description", name: "description", widget: "markdown"}
-            ]
-          - label: "Past Courses", name: "pastCourses", widget: "list", fields: [
-              {label: "Title", name: "title", widget: "string"}, {label: "University", name: "university", widget: "string"}, {label: "Level", name: "level", widget: "string"}
-            ]
-          - label: "Teaching Awards", name: "awards", widget: "list", fields: [
-              {label: "Title", name: "title", widget: "string"}, {label: "Organization", name: "organization", widget: "string"}
-            ]
-          - label: "Student Testimonials", name: "studentTestimonials", widget: "list", fields: [
-              {label: "Quote", name: "quote", widget: "text"}, {label: "Student", name: "student", widget: "string"}
-            ]
+          - label: "Philosophy Principles"
+            name: "teachingPhilosophy"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+          - label: "Current Courses"
+            name: "currentCourses"
+            widget: "list"
+            fields:
+              - {label: "Course Code", name: "code", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "markdown"}
+          - label: "Past Courses"
+            name: "pastCourses"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "University", name: "university", widget: "string"}
+              - {label: "Level", name: "level", widget: "string"}
+          - label: "Teaching Awards"
+            name: "awards"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Organization", name: "organization", widget: "string"}
+          - label: "Student Testimonials"
+            name: "studentTestimonials"
+            widget: "list"
+            fields:
+              - {label: "Quote", name: "quote", widget: "text"}
+              - {label: "Student", name: "student", widget: "string"}
             
       # 7. SERVICE DATA (from service.json)
       - name: "service_data"
@@ -233,17 +251,39 @@ collections:
         format: "json"
         fields:
           - {label: "Research Interests (Markdown)", name: "researchInterests", widget: "markdown"}
-          - label: "Education Records", name: "education", widget: "list", fields: [
-              {label: "Degree", name: "degree", widget: "string"}, {label: "Institution", name: "institution", widget: "string"}, {label: "Year", name: "year", widget: "string"}
-            ]
-          - label: "Current Positions", name: "currentPositions", widget: "list", fields: [
-              {label: "Title", name: "title", widget: "string"}, {label: "Institution", name: "institution", widget: "string"}, {label: "Period", name: "period", widget: "string"}
-            ]
-          - label: "Key Affiliations", name: "keyAffiliations", widget: "list", field: {label: "Affiliation Text", name: "text", widget: "string"}}
-          - label: "Selected Awards", name: "recentAwards", widget: "list", fields: [
-              {label: "Title", name: "title", widget: "string"}, {label: "Organization", name: "organization", widget: "string"}, {label: "Year", name: "year", widget: "string"}
-            ]
-          - label: "Major Grants", name: "majorGrants", widget: "list", fields: [
-              {label: "Title", name: "title", widget: "string"}, {label: "Agency", name: "agency", widget: "string"}, {label: "Amount", name: "amount", widget: "string"}
-            ]
-          - label: "Professional Organizations", name: "professionalOrgs", widget: "list", field: {label: "Organization Name", name: "name", widget: "string"}}
+          - label: "Education Records"
+            name: "education"
+            widget: "list"
+            fields:
+              - {label: "Degree", name: "degree", widget: "string"}
+              - {label: "Institution", name: "institution", widget: "string"}
+              - {label: "Year", name: "year", widget: "string"}
+          - label: "Current Positions"
+            name: "currentPositions"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Institution", name: "institution", widget: "string"}
+              - {label: "Period", name: "period", widget: "string"}
+          - label: "Key Affiliations"
+            name: "keyAffiliations"
+            widget: "list"
+            field: {label: "Affiliation Text", name: "text", widget: "string"}
+          - label: "Selected Awards"
+            name: "recentAwards"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Organization", name: "organization", widget: "string"}
+              - {label: "Year", name: "year", widget: "string"}
+          - label: "Major Grants"
+            name: "majorGrants"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Agency", name: "agency", widget: "string"}
+              - {label: "Amount", name: "amount", widget: "string"}
+          - label: "Professional Organizations"
+            name: "professionalOrgs"
+            widget: "list"
+            field: {label: "Organization Name", name: "name", widget: "string"}
