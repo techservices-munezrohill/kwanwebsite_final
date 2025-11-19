@@ -1,1 +1,46 @@
-
+{
+  "hero_subtitle": "I am a Black, queer, Christian criminologist, attorney, and advocate dedicated to advancing justice through scholarship, teaching, and community engagement.",
+  "hero_description": "My work centers on decolonizing criminology, advancing LGBTQ+ justice, and connecting environmental harm with social justice. I believe in scholarship that serves communities and education that transforms both minds and systems.",
+  
+  "personalValues": [
+    {
+      "title": "Faith & Justice",
+      "description": "My Christian faith calls me to work for justice and healing, seeing each person as made in the image of God with inherent dignity and worth."
+    },
+    {
+      "title": "Lived Experience",
+      "description": "As a Black, queer person, I bring personal understanding of marginalization to my work, grounding scholarship in authentic experience."
+    },
+    {
+      "title": "Liberation Through Learning",
+      "description": "I believe knowledge should serve freedom—both personal liberation and collective transformation of unjust systems."
+    }
+  ],
+  
+  "keyAchievements": [
+    {
+      "year": "2025",
+      "title": "Ruth Shonle Cavan Young Scholar Award",
+      "description": "American Society of Criminology’s most prestigious award for early career scholars, recognizing outstanding contributions to criminological theory and research"
+    },
+    {
+      "year": "2020",
+      "title": "Doctoral Achievement",
+      "description": "Completed Ph.D. in Criminal Justice while maintaining active community advocacy and developing groundbreaking research on identity and justice"
+    }
+  ],
+  
+  "journey_sections": [
+    {
+      "title": "Early Foundations",
+      "content": "Growing up as a Black, queer person in America, I experienced firsthand the intersections of identity, oppression, and resilience. These experiences weren't just academic concepts—they were my reality.\n\nMy Christian faith became both anchor and compass, teaching me that justice work is sacred work, and that each person carries inherent dignity worthy of protection and advocacy."
+    },
+    {
+      "title": "Academic Calling",
+      "content": "My path to criminology wasn't traditional. Personal encounters with injustice sparked questions I couldn't ignore: Why do certain communities bear the brunt of criminalization? How can systems designed to protect actually heal?\n\nLaw school at Emory University gave me tools for advocacy, while my environmental science background at Tuskegee University taught me to see connections between social and ecological justice."
+    }
+  ],
+  
+  "mission_quote": "\"I continue to bridge the worlds of academia, advocacy, and community organizing, always asking: How can our work contribute to liberation and healing? How can we transform systems rather than simply reform them?\"",
+  "mission_follow_up": "This question drives everything I do—from the classroom to the courtroom to community spaces."
+}
