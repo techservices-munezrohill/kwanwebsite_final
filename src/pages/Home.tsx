@@ -184,7 +184,7 @@ const Home = () => {
               <div className="relative w-full max-w-md lg:max-w-lg xl:max-w-xl aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300">
                 <img
                   src={Photo6}
-                  alt={hero_image.alt} {/* EDITED: Use imported alt text */}
+                  alt={hero_image.alt} 
                   className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
                   loading="eager"
                 />
