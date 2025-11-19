@@ -7,7 +7,7 @@ collections:
   - name: "site_content"
     label: "Website Pages & Global Data"
     files:
-      
+    
       # 1. HOME PAGE CONTENT (from homepage.json)
       - name: "home"
         label: "Home Page"
