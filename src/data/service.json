@@ -1,1 +1,60 @@
-
+{
+  "serviceData": [
+    {
+      "organization": "Out Loud & United",
+      "role": "Chair, Board of Trustees",
+      "period": "2025–present",
+      "description": "Leading governance and strategic direction for LGBTQ+ advocacy organization",
+      "type": "community"
+    },
+    {
+      "organization": "Foundation of Freedom",
+      "role": "Research Director",
+      "period": "2021–present",
+      "description": "Directing research initiatives focused on criminal justice reform and community empowerment",
+      "type": "community"
+    },
+    {
+      "organization": "New Yorkers Against Gun Violence",
+      "role": "Research Advisory Board Member",
+      "period": "2021–present",
+      "description": "Providing research expertise on gun violence prevention strategies",
+      "type": "community"
+    },
+    {
+      "organization": "Arizona State University",
+      "role": "Faculty Search Committee Member",
+      "period": "2023–2025",
+      "description": "Participating in faculty recruitment for School of Criminology and Criminal Justice",
+      "type": "university"
+    },
+    {
+      "organization": "John Jay College Alumni Association",
+      "role": "First Vice President, Executive Board",
+      "period": "2022–2024",
+      "description": "Leading alumni engagement and institutional advancement initiatives",
+      "type": "university"
+    },
+    {
+      "organization": "American Society of Criminology",
+      "role": "Ruth Shonle Cavan Young Scholar Award Recipient",
+      "period": "2025",
+      "description": "Recognized for outstanding early career contributions to criminological scholarship",
+      "type": "academic"
+    },
+    {
+      "organization": "Race and Justice",
+      "role": "Editorial Board Member",
+      "period": "2024–present",
+      "description": "Providing peer review and editorial guidance for academic journal",
+      "type": "academic"
+    },
+    {
+      "organization": "Society for Conservation Biology",
+      "role": "Board Member, Social Sciences Working Group",
+      "period": "2021–2024",
+      "description": "Advancing interdisciplinary collaboration between social sciences and conservation",
+      "type": "academic"
+    }
+  ]
+}
