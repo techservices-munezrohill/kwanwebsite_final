@@ -1,1 +1,53 @@
-
+{
+  "email": "kblounthill@gmail.com",
+  "location_1": "Phoenix, AZ",
+  "location_2": "NY, USA",
+  
+  "faqs": [
+    {
+      "question": "How can I collaborate on research?",
+      "answer": "I welcome research collaborations that align with my focus on critical criminology, social justice, and community-centered approaches. Please reach out with your ideas and we can explore potential partnerships."
+    },
+    {
+      "question": "Do you accept speaking engagements?",
+      "answer": "Yes, I regularly speak at conferences, universities, and community events on topics related to criminology, social justice, and advocacy. Please provide details about your event and timeline."
+    },
+    {
+      "question": "Can you provide consultation services?",
+      "answer": "I offer consultation services for organizations, legal teams, and policy makers on criminal justice reform, diversity and inclusion, and community engagement strategies."
+    }
+  ],
+  
+  "social_links": [
+    {
+      "platform": "Google Scholar",
+      "url": "https://scholar.google.com/citations?user=kwan-lamar-blount-hill"
+    },
+    {
+      "platform": "ResearchGate Profile",
+      "url": "https://www.researchgate.net/profile/Kwan_Lamar_Blount_Hill"
+    },
+    {
+      "platform": "ORCID ID",
+      "url": "https://orcid.org/0000-0002-5471-0812"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/in/kwan-lamar-blount-hill"
+    },
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/kwanbh"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/kwanlamar.blounthill"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/kwanlamarblounthill"
+    }
+  ],
+  
+  "response_time": "I typically respond to all inquiries within 24 hours during business days. For time-sensitive matters, please indicate urgency in your message."
+}
