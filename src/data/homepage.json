@@ -1,1 +1,83 @@
-
+{
+  "fullText": "Dr. Kwan-Lamar Blount-Hill",
+  "subtitle": "Scholar. Attorney. Advocate.",
+  "description": "Criminologist, professor, researcher, and advocate for social and ecological justice. Advancing transformative scholarship that centers Black, queer, and marginalized voices.",
+  
+  "hero_image": {
+    "path": "../assets/Photo-6.jpg",
+    "alt": "Dr. Kwan-Lamar Blount-Hill professional"
+  },
+  
+  "features": [
+    {
+      "title": "Scholar",
+      "description": "Advancing criminological theory through innovative research and critical analysis."
+    },
+    {
+      "title": "Attorney",
+      "description": "Advocating for justice through legal expertise and policy reform."
+    },
+    {
+      "title": "Advocate",
+      "description": "Championing social and ecological justice for marginalized communities."
+    }
+  ],
+  
+  "stats": [
+    {
+      "number": "8+",
+      "label": "Years Experience",
+      "targetValue": 8,
+      "prefix": "",
+      "suffix": "+"
+    },
+    {
+      "number": "33+",
+      "label": "Publications",
+      "targetValue": 33,
+      "prefix": "",
+      "suffix": "+"
+    },
+    {
+      "number": "4+",
+      "label": "Universities",
+      "targetValue": 4,
+      "prefix": "",
+      "suffix": "+"
+    },
+    {
+      "number": "$1.2M+",
+      "label": "Research Funding",
+      "targetValue": 1.2,
+      "prefix": "$",
+      "suffix": "M+"
+    }
+  ],
+  
+  "recentWorkPreview": [
+    {
+      "title": "Social Identity Theory Research",
+      "type": "Research",
+      "description": "Reimagining community in criminal justice through shared narrative frameworks.",
+      "link": "/publications#social-identity-theory",
+      "color": "from-amber-500 to-orange-600"
+    },
+    {
+      "title": "Decolonizing Criminology",
+      "type": "Publication",
+      "description": "A comprehensive examination of Indigenous and non-Western epistemologies in criminology.",
+      "link": "/publications#decolonizing-criminology",
+      "color": "from-stone-600 to-stone-700"
+    },
+    {
+      "title": "Queer Criminology Research",
+      "type": "Research",
+      "description": "Exploring LGBTQ+ experiences and the politics of visibility in criminal justice systems.",
+      "link": "/publications#queer-criminology",
+      "color": "from-emerald-500 to-teal-600"
+    }
+  ],
+  
+  "cta_headline": "Collaborate on Justice-Centered Work",
+  "cta_subtext": "Interested in research collaboration, speaking engagements, or consulting on justice initiatives?"
+}
