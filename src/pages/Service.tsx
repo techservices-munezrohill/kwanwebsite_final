@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Award, Building, BookOpen, ExternalLink, RefreshCw, ChevronDown, ChevronUp, Star } from 'lucide-react';
-import { fetchServiceDataFromGoogleDocs } from '../utils/googleDocs';
+
+// === EDITED: Import service data from JSON file ===
+import serviceContent from '../data/service.json';
+
+const { serviceData } = serviceContent;
+// ===================================================
+
+// NOTE: Since the data is loaded locally now, we remove the API key and doc ID definitions.
+// The `fetchServiceDataFromGoogleDocs` utility is no longer needed for primary data loading.
 
 interface ServiceItem {
   organization: string;
@@ -11,9 +19,9 @@ interface ServiceItem {
 }
 
 const Service = () => {
-  const [serviceData, setServiceData] = useState<ServiceItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [lastUpdated, setLastUpdated] = useState<string>('');
+  // We use the imported serviceData array directly, setting loading to false initially.
+  const [loading, setLoading] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState<string>('Local Data'); // Edited: Reflects local source
   
   // UI state for content management
   const [collapsedSections, setCollapsedSections] = useState<{[key: string]: boolean}>({
@@ -28,107 +36,16 @@ const Service = () => {
   });
   
   const ITEMS_TO_SHOW_INITIALLY = 4; // Show 4 items initially, rest behind "Show More"
-  
-  // Google Docs integration - your actual Google Doc ID
-  const GOOGLE_DOC_ID = '1TVf6oew7JEigQHFY7H5FsxSJ09z5-DyHg2HDMe_8q04';
-  const GOOGLE_SHEETS_API_KEY = 'YOUR_API_KEY_HERE';
 
-  // Mock data for development (replace with actual Google Docs data)
-  const mockServiceData: ServiceItem[] = [
-    {
-      organization: "Out Loud & United",
-      role: "Chair, Board of Trustees",
-      period: "2025–present",
-      description: "Leading governance and strategic direction for LGBTQ+ advocacy organization",
-      type: "community"
-    },
-    {
-      organization: "Foundation of Freedom",
-      role: "Research Director",
-      period: "2021–present",
-      description: "Directing research initiatives focused on criminal justice reform and community empowerment",
-      type: "community"
-    },
-    {
-      organization: "New Yorkers Against Gun Violence",
-      role: "Research Advisory Board Member",
-      period: "2021–present",
-      description: "Providing research expertise on gun violence prevention strategies",
-      type: "community"
-    },
-    {
-      organization: "Arizona State University",
-      role: "Faculty Search Committee Member",
-      period: "2023–2025",
-      description: "Participating in faculty recruitment for School of Criminology and Criminal Justice",
-      type: "university"
-    },
-    {
-      organization: "John Jay College Alumni Association",
-      role: "First Vice President, Executive Board",
-      period: "2022–2024",
-      description: "Leading alumni engagement and institutional advancement initiatives",
-      type: "university"
-    },
-    {
-      organization: "American Society of Criminology",
-      role: "Ruth Shonle Cavan Young Scholar Award Recipient",
-      period: "2025",
-      description: "Recognized for outstanding early career contributions to criminological scholarship",
-      type: "academic"
-    },
-    {
-      organization: "Race and Justice",
-      role: "Editorial Board Member",
-      period: "2024–present",
-      description: "Providing peer review and editorial guidance for academic journal",
-      type: "academic"
-    },
-    {
-      organization: "Society for Conservation Biology",
-      role: "Board Member, Social Sciences Working Group",
-      period: "2021–2024",
-      description: "Advancing interdisciplinary collaboration between social sciences and conservation",
-      type: "academic"
-    }
-  ];
-
+  // EDITED: Load function is removed as data is imported directly.
+  // We keep useEffect for potential initial UI setup if needed.
   useEffect(() => {
-    // For now, use mock data. Replace this with actual Google Docs API call
-    loadServiceData();
+    // Optionally trigger something once data is loaded/available
+    setLastUpdated(new Date().toLocaleDateString());
   }, []);
 
-  const loadServiceData = async () => {
-    setLoading(true);
-    try {
-      // Try to fetch from Google Docs first
-      const config = {
-        docId: GOOGLE_DOC_ID,
-        apiKey: GOOGLE_SHEETS_API_KEY
-      };
-      
-      console.log('Attempting to fetch from Google Docs...', config.docId);
-      const googleData = await fetchServiceDataFromGoogleDocs(config);
-      
-      if (googleData && googleData.length > 0) {
-        console.log('Successfully loaded from Google Docs:', googleData.length, 'items');
-        setServiceData(googleData);
-      } else {
-        console.log('No data from Google Docs, using mock data');
-        setServiceData(mockServiceData);
-      }
-      
-      setLastUpdated(new Date().toLocaleDateString());
-    } catch (error) {
-      console.error('Error loading service data from Google Docs:', error);
-      console.log('Falling back to mock data');
-      setServiceData(mockServiceData); // Fallback to mock data
-      setLastUpdated(new Date().toLocaleDateString());
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  // EDITED: The serviceData is now the imported 'serviceData' array.
+  
   const getServiceIcon = (type: string) => {
     switch (type) {
       case 'community':
@@ -155,6 +72,7 @@ const Service = () => {
     }
   };
 
+  // Group services based on the imported data
   const groupedServices = {
     community: serviceData.filter(item => item.type === 'community'),
     university: serviceData.filter(item => item.type === 'university'),
@@ -185,7 +103,7 @@ const Service = () => {
   // Get highlighted (current/recent) services
   const getHighlightedServices = () => {
     const currentYear = new Date().getFullYear();
-    return serviceData.filter(service => {
+    return serviceData.filter(service => { // EDITED: Uses imported serviceData
       // Show current roles (containing "present") or recent roles (2023+)
       return service.period.toLowerCase().includes('present') || 
              service.period.includes('2024') || 
@@ -235,7 +153,7 @@ const Service = () => {
               </div>
               <div>
                 <h2 className="text-3xl font-bold text-stone-800">Current & Recent Service</h2>
-                <p className="text-stone-600 mt-1">Key leadership roles and ongoing commitments</p>
+                <p className="text-stone-600 mt-1">Key leadership roles and ongoing commitments (Last Updated: {lastUpdated})</p>
               </div>
             </div>
             
