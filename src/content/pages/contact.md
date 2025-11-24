@@ -6,4 +6,3 @@ source: cms
 
 - Email: example@example.com
 - Twitter: @example
-

@@ -5,4 +5,3 @@ source: cms
 ---
 
 Browse selected publications below.
-
