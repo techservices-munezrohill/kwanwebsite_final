@@ -9,7 +9,7 @@ content:
     path: src/content/pages
     filename: "{fields.slug}.md"
     view:
-      fields: [ title, slug ]
+      fields: [ title, slug, source ]
     fields:
       - name: title
         label: Title
@@ -20,6 +20,20 @@ content:
         type: string
         pattern: ^[a-z0-9-]+$
         required: true
+      - name: source
+        label: Source
+        type: select
+        options:
+          - label: CMS Markdown
+            value: cms
+          - label: Google Doc (embed)
+            value: google-doc-embed
+          - label: Google Doc (fetch text)
+            value: google-doc-fetch
+        required: false
+      - name: googleDocId
+        label: Google Doc ID
+        type: string
       - name: heroImage
         label: Hero Image
         type: image

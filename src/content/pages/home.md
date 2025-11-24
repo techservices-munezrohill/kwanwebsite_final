@@ -1,6 +1,7 @@
 ﻿---
 title: Home
 slug: home
+source: cms
 heroImage: /assets/cms/hero.jpg
 ---
 
