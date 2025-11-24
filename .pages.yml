@@ -1,289 +1,80 @@
-# .pages.yml - Pages CMS Configuration
-# This file contains the corrected YAML structure.
+﻿media:
+  input: src/assets/cms
+  output: /assets/cms
 
-# -----------------------------------------------
-# A. STATIC PAGES & GLOBAL DATA (Files Collections)
-# -----------------------------------------------
-collections:
-  - name: "site_content"
-    label: "Website Pages & Global Data"
-    files:
-      
-      # 1. HOME PAGE CONTENT (from homepage.json)
-      - name: "home"
-        label: "Home Page"
-        file: "src/data/homepage.json" 
-        format: "json" 
-        fields:
-          - {label: "Name (Animated)", name: "fullText", widget: "string"}
-          - {label: "Subtitle", name: "subtitle", widget: "string"}
-          - {label: "Description", name: "description", widget: "text", hint: "The main paragraph under the subtitle"}
-          - label: "Hero Image"
-            name: "hero_image"
-            widget: "object"
-            fields:
-              - {label: "Image File", name: "path", widget: "image", required: true, media_folder: "public/assets"}
-              - {label: "Alt Text", name: "alt", widget: "string"}
-          - label: "Features (Scholar, Attorney, Advocate)"
-            name: "features"
-            widget: "list"
-            summary: "{{fields.title}}"
-            fields:
-              - {label: "Title", name: "title", widget: "string"} 
-              - {label: "Description", name: "description", widget: "text"}
-          - label: "Stats Section"
-            name: "stats"
-            widget: "list"
-            summary: "{{fields.label}}: {{fields.number}}"
-            fields:
-              - {label: "Label", name: "label", widget: "string"}
-              - {label: "Display Number (e.g., 8+)", name: "number", widget: "string"}
-              - {label: "Target Value (for animation)", name: "targetValue", widget: "number"}
-              - {label: "Prefix", name: "prefix", widget: "string", default: ""}
-              - {label: "Suffix", name: "suffix", widget: "string", default: ""}
-          - {label: "CTA Headline", name: "cta_headline", widget: "string"}
-          - {label: "CTA Subtext", name: "cta_subtext", widget: "string"}
-          
-      # 2. ABOUT PAGE CONTENT (from about.json)
-      - name: "about"
-        label: "About Page"
-        file: "src/data/about.json" 
-        format: "json" 
-        fields:
-          - {label: "Hero Subtitle", name: "hero_subtitle", widget: "string", hint: "I am a Black, queer... advocate dedicated to..."}
-          - {label: "Hero Description", name: "hero_description", widget: "markdown"}
-          - label: "Personal Values"
-            name: "personalValues"
-            widget: "list"
-            summary: "{{fields.title}}"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
-          - label: "Key Milestones"
-            name: "keyAchievements"
-            widget: "list"
-            summary: "{{fields.title}} ({{fields.year}})"
-            fields:
-              - {label: "Year", name: "year", widget: "string"}
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
-          - {label: "Mission Quote (Today's Mission)", name: "mission_quote", widget: "markdown"}
-          - {label: "Mission Follow Up", name: "mission_follow_up", widget: "text"}
+content:
+  - name: pages
+    label: Pages
+    type: collection
+    path: src/content/pages
+    filename: "{fields.slug}.md"
+    view:
+      fields: [ title, slug ]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: slug
+        label: Slug
+        type: string
+        pattern: ^[a-z0-9-]+$
+        required: true
+      - name: heroImage
+        label: Hero Image
+        type: image
+      - name: body
+        label: Body
+        type: rich-text
 
-      # 3. CONTACT PAGE CONTENT (from contact.json)
-      - name: "contact"
-        label: "Contact Page & Info"
-        file: "src/data/contact.json"
-        format: "json"
+  - name: publications
+    label: Publications
+    type: collection
+    path: src/content/publications
+    filename: "{year}-{fields.slug}.md"
+    view:
+      fields: [ title, year ]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: slug
+        label: Slug
+        type: string
+        pattern: ^[a-z0-9-]+$
+        required: true
+      - name: authors
+        label: Authors
+        type: list
         fields:
-          - {label: "Contact Email", name: "email", widget: "string", hint: "The email address shown on the page"}
-          - {label: "Location 1", name: "location_1", widget: "string"}
-          - {label: "Location 2", name: "location_2", widget: "string"}
-          - {label: "Response Time Text", name: "response_time", widget: "text"}
-          - label: "FAQ List"
-            name: "faqs"
-            widget: "list"
-            summary: "{{fields.question}}"
-            fields:
-              - {label: "Question", name: "question", widget: "string"}
-              - {label: "Answer", name: "answer", widget: "text"}
-          - label: "Social Media Links"
-            name: "social_links"
-            widget: "list"
-            summary: "{{fields.platform}}"
-            fields:
-              - {label: "Platform Name", name: "platform", widget: "string"}
-              - {label: "URL", name: "url", widget: "string"}
+          - name: author
+            label: Author
+            type: string
+      - name: venue
+        label: Journal/Publisher
+        type: string
+      - name: year
+        label: Year
+        type: number
+      - name: doi
+        label: DOI/Link
+        type: string
+      - name: abstract
+        label: Abstract
+        type: text
+      - name: cover
+        label: Cover Image
+        type: image
 
-
-# -----------------------------------------------
-# B. REPEATABLE CONTENT LISTS
-# -----------------------------------------------
-  - name: "research_data"
-    label: "Research & Publications"
-    files:
-      
-      # 4. PROJECTS LIST (from projects.json)
-      - name: "project_list"
-        label: "All Projects"
-        file: "src/data/projects.json"
-        format: "json"
-        fields:
-          - label: "Project Entries"
-            name: "projects"
-            widget: "list"
-            summary: "{{fields.title}} ({{fields.category}})"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Category", name: "category", widget: "select", options: ["academic", "advocacy", "research", "community"]}
-              - {label: "Type", name: "type", widget: "string"}
-              - {label: "Period", name: "period", widget: "string"}
-              - {label: "Location", name: "location", widget: "string"}
-              - {label: "Description", name: "description", widget: "markdown"}
-              - {label: "Impact Summary", name: "impact", widget: "text"}
-              - {label: "Collaborators", name: "collaborators", widget: "list", field: {label: "Name", name: "name", widget: "string"}}
-              - {label: "Outcomes", name: "outcomes", widget: "list", field: {label: "Outcome Text", name: "text", widget: "string"}}
-              - {label: "Is Featured?", name: "featured", widget: "boolean"}
-          - label: "Research Areas"
-            name: "researchAreas"
-            widget: "list"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
-              - {label: "Publications Count", name: "publications", widget: "number"}
-          - label: "Current Research Projects (Grants)"
-            name: "currentResearchProjects"
-            widget: "list"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Funding Source", name: "funding", widget: "string"}
-              - {label: "Amount", name: "amount", widget: "string"}
-              - {label: "Description", name: "description", widget: "markdown"}
-              - {label: "Collaborators", name: "collaborators", widget: "list", field: {label: "Name", name: "name", widget: "string"}}
-          - label: "Methodologies"
-            name: "methodologies"
-            widget: "list"
-            field: {label: "Methodology Name", name: "name", widget: "string"}
-          - label: "Impact Summary Stats"
-            name: "impactSummary"
-            widget: "list"
-            fields:
-              - {label: "Number", name: "number", widget: "string"}
-              - {label: "Label", name: "label", widget: "string"}
-
-
-      # 5. PUBLICATION LIST (from publications.json)
-      - name: "publication_list"
-        label: "All Publications"
-        file: "src/data/publications.json"
-        format: "json"
-        fields:
-          - {label: "Publications Hero Text", name: "publications_hero_text", widget: "markdown"}
-          - label: "Publications"
-            name: "publications"
-            widget: "list"
-            summary: "{{fields.title}} ({{fields.year}})"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Type", name: "type", widget: "select", options: ["journal", "book", "report"]}
-              - {label: "Authors (CSV)", name: "authors", widget: "list", field: {label: "Author Name", name: "name", widget: "string"}}
-              - {label: "Journal/Publisher", name: "journal_or_publisher", widget: "string"} 
-              - {label: "Year", name: "year", widget: "number"}
-              - {label: "Abstract", name: "abstract", widget: "markdown"}
-              - {label: "Full URL", name: "fullUrl", widget: "string", required: false}
-              - {label: "Is Featured?", name: "featured", widget: "boolean"}
-          - label: "Media Features"
-            name: "mediaFeatures"
-            widget: "list"
-            summary: "{{fields.title}} ({{fields.outlet}})"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Outlet", name: "outlet", widget: "string"}
-              - {label: "Date (YYYY-MM-DD)", name: "date", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
-              - {label: "URL", name: "url", widget: "string"}
-
-  - name: "academic_data"
-    label: "Teaching, Service & CV"
-    files:
-      
-      # 6. COURSES & TEACHING DATA (from courses.json)
-      - name: "courses_and_awards"
-        label: "Courses & Awards"
-        file: "src/data/courses.json"
-        format: "json"
-        fields:
-          - {label: "Philosophy Quote", name: "philosophyQuote", widget: "markdown"}
-          - label: "Philosophy Principles"
-            name: "teachingPhilosophy"
-            widget: "list"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
-          - label: "Current Courses"
-            name: "currentCourses"
-            widget: "list"
-            fields:
-              - {label: "Course Code", name: "code", widget: "string"}
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Description", name: "description", widget: "markdown"}
-          - label: "Past Courses"
-            name: "pastCourses"
-            widget: "list"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "University", name: "university", widget: "string"}
-              - {label: "Level", name: "level", widget: "string"}
-          - label: "Teaching Awards"
-            name: "awards"
-            widget: "list"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Organization", name: "organization", widget: "string"}
-          - label: "Student Testimonials"
-            name: "studentTestimonials"
-            widget: "list"
-            fields:
-              - {label: "Quote", name: "quote", widget: "text"}
-              - {label: "Student", name: "student", widget: "string"}
-            
-      # 7. SERVICE DATA (from service.json)
-      - name: "service_data"
-        label: "Service Roles"
-        file: "src/data/service.json"
-        format: "json"
-        fields:
-          - label: "Service Items"
-            name: "serviceData"
-            widget: "list"
-            summary: "{{fields.role}} at {{fields.organization}}"
-            fields:
-              - {label: "Organization", name: "organization", widget: "string"}
-              - {label: "Role", name: "role", widget: "string"}
-              - {label: "Period", name: "period", widget: "string", hint: "e.g., 2024–present"}
-              - {label: "Description", name: "description", widget: "text", required: false}
-              - {label: "Type", name: "type", widget: "select", options: ["community", "university", "academic"]}
-
-      # 8. CV DATA (from cv.json)
-      - name: "cv_data"
-        label: "CV Records"
-        file: "src/data/cv.json"
-        format: "json"
-        fields:
-          - {label: "Research Interests (Markdown)", name: "researchInterests", widget: "markdown"}
-          - label: "Education Records"
-            name: "education"
-            widget: "list"
-            fields:
-              - {label: "Degree", name: "degree", widget: "string"}
-              - {label: "Institution", name: "institution", widget: "string"}
-              - {label: "Year", name: "year", widget: "string"}
-          - label: "Current Positions"
-            name: "currentPositions"
-            widget: "list"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Institution", name: "institution", widget: "string"}
-              - {label: "Period", name: "period", widget: "string"}
-          - label: "Key Affiliations"
-            name: "keyAffiliations"
-            widget: "list"
-            field: {label: "Affiliation Text", name: "text", widget: "string"}
-          - label: "Selected Awards"
-            name: "recentAwards"
-            widget: "list"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Organization", name: "organization", widget: "string"}
-              - {label: "Year", name: "year", widget: "string"}
-          - label: "Major Grants"
-            name: "majorGrants"
-            widget: "list"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Agency", name: "agency", widget: "string"}
-              - {label: "Amount", name: "amount", widget: "string"}
-          - label: "Professional Organizations"
-            name: "professionalOrgs"
-            widget: "list"
-            field: {label: "Organization Name", name: "name", widget: "string"}
+  - name: site
+    label: Site Settings
+    type: file
+    path: src/config/site.json
+    fields:
+      - name: title
+        label: Website Title
+        type: string
+      - name: description
+        label: Website Description
+        type: string

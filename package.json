@@ -14,9 +14,11 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "axios": "^1.6.0",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^0.534.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "^7.7.1"
   },
   "devDependencies": {
