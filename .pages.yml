@@ -1,63 +1,50 @@
-﻿media:
-  input: src/assets/cms
-  output: /assets/cms
+﻿site:
+  name: Kwan Website
+
+media:
+  input: src/assets
+  output: /assets
 
 content:
   - name: pages
     label: Pages
     type: collection
     path: src/content/pages
-    filename: "{fields.slug}.md"
+    filename: '{fields.slug}.md'
     view:
       fields: [ title, slug, source ]
     fields:
       - name: title
         label: Title
         type: string
-        required: true
       - name: slug
         label: Slug
         type: string
-        pattern: ^[a-z0-9-]+$
-        required: true
       - name: source
         label: Source
         type: select
-        options:
-          - label: CMS Markdown
-            value: cms
-          - label: Google Doc (embed)
-            value: google-doc-embed
-          - label: Google Doc (fetch text)
-            value: google-doc-fetch
-        required: false
+        options: [ cms, google-doc-embed, google-doc-fetch ]
       - name: googleDocId
         label: Google Doc ID
         type: string
-      - name: heroImage
-        label: Hero Image
-        type: image
       - name: body
         label: Body
-        type: rich-text
+        type: markdown
 
   - name: publications
     label: Publications
     type: collection
     path: src/content/publications
-    filename: "{year}-{fields.slug}.md"
+    filename: '{year}-{fields.slug}.md'
     view:
       fields: [ title, year ]
     fields:
       - name: title
         label: Title
         type: string
-        required: true
       - name: slug
         label: Slug
         type: string
-        pattern: ^[a-z0-9-]+$
-        required: true
       - name: authors
         label: Authors
         type: list
